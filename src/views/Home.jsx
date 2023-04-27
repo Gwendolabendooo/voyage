@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 
 import BgHome from '../assets/bg/bgHome.png'
 
@@ -12,14 +12,129 @@ import { mdiAccountMultiple, mdiCalendar, mdiRoadVariant } from '@mdi/js';
 import DatePicker from '../components/DatePicker'
 
 import 'swiper/css';
-import 'swiper/css/effect-fade';
+import "swiper/css/pagination";
 
 export default function Home() {
     const [activeType, setActiveType] = useState("Evasion");
     const [value, setValue] = useState(null);
     const [calendarDate, setCalendarDate] = useState(null);
     const [adultes, setAdultes] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [enfants, setEnfants] = useState(0);
+
+    const lastTravel = [
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        },
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        },
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        },
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        },
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        },
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        },
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        },
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        },
+        {
+            picture: "https://www.guidesulysse.com/images/destinations/iStock-1137803766.jpg",
+            name: "Expédition à barcelone"
+        }
+    ]
+
+    const blogContent = [
+        {
+            picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+            name: "Les plus belles randos de la Croatie.",
+            priority: 1
+        },
+        {
+            priority: 2,
+            content: [
+                {
+                    picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+                    name: "Expédition à barcelone",
+                },
+                {
+                    picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+                    name: "Expédition à barcelone",
+                }
+            ]
+        },
+        {
+            picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+            name: "Les plus belles randos de la Croatie.",
+            priority: 1
+        },
+        {
+            priority: 2,
+            content: [
+                {
+                    picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+                    name: "Expédition à barcelone",
+                },
+                {
+                    picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+                    name: "Expédition à barcelone",
+                }
+            ]
+        },
+        {
+            picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+            name: "Les plus belles randos de la Croatie.",
+            priority: 1
+        },
+        {
+            priority: 2,
+            content: [
+                {
+                    picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+                    name: "Expédition à barcelone",
+                },
+                {
+                    picture: "https://img.freepik.com/vecteurs-libre/illustration-publication-blog-plat-organique-personnes_23-2148955260.jpg",
+                    name: "Expédition à barcelone",
+                }
+            ]
+        }
+    ]
+
+    const steps = [
+        {
+            step: "Etape 1",
+            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+            picture: "https://media.routard.com/image/40/2/panneaux-voyage.1603402.jpg"
+        },
+        {
+            step: "Etape 2",
+            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+            picture: "https://st.depositphotos.com/2294011/3530/i/600/depositphotos_35302039-stock-photo-travel-and-trip.jpg"
+        },
+        {
+            step: "Etape 3",
+            desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+            picture: "https://st.depositphotos.com/1003723/3316/i/600/depositphotos_33167371-stock-photo-girl-on-the-wooden-jetty.jpg"
+        }
+    ]
 
     return (
         <>
@@ -90,7 +205,7 @@ export default function Home() {
                                     size={1}
                                     className="iconabs"
                                     color="#565656" />
-                                <input type="number" name="adultes"value={adultes} onChange={(e) => setAdultes(e.target.value)} min={0} max={10} id="" />
+                                <input type="number" name="adultes" value={adultes} onChange={(e) => setAdultes(e.target.value)} min={0} max={10} id="" />
                             </div>
                         </div>
                         <div>
@@ -100,7 +215,7 @@ export default function Home() {
                                     size={1}
                                     className="iconabs"
                                     color="#565656" />
-                                <input type="number" name="enfant"value={enfants} onChange={(e) => setEnfants(e.target.value)} min={0} max={10} id="" />
+                                <input type="number" name="enfant" value={enfants} onChange={(e) => setEnfants(e.target.value)} min={0} max={10} id="" />
                             </div>
                         </div>
                     </div>
@@ -110,20 +225,130 @@ export default function Home() {
                 </div>
             </header>
 
+            <div className='title' style={{ paddingLeft: '80px', paddingTop: "80px" }}>
+                Voyages récents
+            </div>
+
             <Swiper
-                spaceBetween={0}
+                spaceBetween={50}
                 slidesPerView={"auto"}
                 loop={true}
                 grabCursor={true}
                 pagination={true}
+                style={{ padding: '80px' }}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  }}
+                modules={[Pagination, Autoplay]}
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+            >
+                {lastTravel.map((el, i) => {
+                    return (
+                        <SwiperSlide key={i} style={{ width: '350px' }}>
+                            <div className='slideLast' style={{ backgroundImage: "url(" + el.picture + ")" }}>
+                                <div className='ctnSlide'>
+                                    <div className='ctnName'>
+                                        {el.name}
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    )
+
+                })}
+            </Swiper>
+            <div className='title' style={{ paddingLeft: '80px', paddingTop: "80px" }}>
+                Nos articles
+            </div>
+            <Swiper
+                spaceBetween={50}
+                slidesPerView={"auto"}
+                loop={true}
+                grabCursor={true}
+                pagination={true}
+                style={{ padding: '50px' }}
                 modules={[Pagination]}
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}
             >
-                {[1, 2, 3].map((i, el) => {
-                    return <SwiperSlide>Slide {el}</SwiperSlide>;
+                {blogContent.map((el, i) => {
+                    if (el.priority === 1) {
+                        return (
+                            <SwiperSlide key={i} style={{ width: '700px' }}>
+                                <div className='slideLastBlog' style={{ backgroundImage: "url(" + el.picture + ")", height: '500px' }}>
+                                    <div className='ctnSlide'>
+                                        <div className='ctnName'>
+                                            {el.name}
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        )
+                    } else {
+                        return (<SwiperSlide key={i} style={{ width: '500px', height: '500px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                            <div className='slideLastBlog' style={{ backgroundImage: "url(" + el.content[0].picture + ")", height: '220px' }}>
+                                <div className='ctnSlide'>
+                                    <div className='ctnName'>
+                                        {el.content[0].name}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='slideLastBlog' style={{ backgroundImage: "url(" + el.content[1].picture + ")", height: '220px' }}>
+                                <div className='ctnSlide'>
+                                    <div className='ctnName'>
+                                        {el.content[1].name}
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>)
+                    }
+
                 })}
             </Swiper>
+
+            <div style={{width: '75%', marginTop: "250px", position: 'relative', marginBottom: '100px'}}>
+                <div class="picStep" style={{backgroundImage: 'url('+steps[activeIndex].picture+')', height: '100%', position: 'absolute'}}>
+
+                </div>
+                <Swiper
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    grabCursor={true}
+                    pagination={true}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                      }}
+                    modules={[Pagination, Autoplay]}
+                    onSlideChange={(e) => {setActiveIndex(e.activeIndex); console.log("test", e.activeIndex)}}
+                    onSwiper={(swiper) => console.log(swiper)}
+                >
+                    {steps.map((el, i) => {
+                        return (
+                            <SwiperSlide key={i} style={{ width: '700px' }}>
+                                <div className='slideLastStep'>
+                                    <div className='step' style={{position: 'absolute'}}>
+                                        0{i+1}
+                                    </div>
+                                    <div className='ctnSlideStep' style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                        <div style={{width: '50%', color: 'white'}}>
+                                        <div className='title'>
+                                                {el.step}
+                                            </div>
+                                            <div>
+                                                {el.desc}
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        )
+
+                    })}
+                </Swiper>
+            </div>
         </>
     )
 }
