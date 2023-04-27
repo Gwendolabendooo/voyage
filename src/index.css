@@ -137,6 +137,204 @@ body {
   margin-right: 20px;
 }
 
+header {
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.type{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.typeButton{
+  padding: 15px;
+  background-color: #EAEAEA;
+  border-radius: 8px;
+  color: #565656;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: fit-content;
+  text-align: center;
+}
+
+.calendar-container{
+  display: flex;
+  gap: 50px;
+}
+
+.calendar-title{
+  border-radius: 200px;
+  padding: 10px;
+  margin-bottom: 40px!important;
+  font-weight: bold;
+  color: white;
+  width: 300px;
+  text-align: center;
+  margin: auto;
+  font-size: 1rem;
+  background-color: #FC5710;
+}
+
+.disabled{
+  color: rgb(193, 193, 193);
+  cursor: none;
+}
+
+.descHeader{
+  font-weight: bold;
+  color: white;
+  font-size: 2rem;
+  width: 22rem;
+}
+
+th{
+  color: #6C6C6C;
+  font-size: .7rem;
+  width: 40px;
+}
+
+td{
+  font-size: .8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#calendar{
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  width: fit-content;
+  position: absolute;
+  right: 200px;
+  transform: translate(-50%, -50%);
+  top: 0px;
+}
+
+.descType{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.iconabs{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 30px;
+  top: 50%;
+}
+
+.peopleC{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+input {
+  padding: 15px;
+    background-color: #EAEAEA;
+    border-radius: 8px;
+    color: #565656;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: -moz-fit-content;
+    width: fit-content;
+    text-align: center;
+    border: none;
+    padding: 20px;
+    padding-left: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.calendar-header{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+  width: calc(100% - 90px);
+  cursor: pointer;
+  font-size: 30px;
+  position: absolute;
+  top: 92px;
+  padding: 20px;
+}
+
+.ctn-depart{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+td.selected {
+  background-color: #fc571036;
+}
+
+td{
+  cursor: pointer;
+  padding: 7px;
+}
+
+.titleMonth{
+  color: black;
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+.limitDate{   
+   background-color: #fc5710;
+  color: white;
+}
+
+
+
+.outside{
+  display: none;
+}
+
+.module{
+  background: #F9F9F9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 12px 24px rgba(30, 30, 32, 0.25);
+  border-radius: 20px 0px 0px 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+}
+
+.descType > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.titleHeader{
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+header > div{
+  padding: 50px;
+}
+
 .weather-absolute{
   display: flex;
   flex-direction: column;
