@@ -210,7 +210,7 @@ export default function Home() {
                         {activeType === "Evasion" ?
                             <>
                                 <div>
-                                    <div className='typeButton' onClick={() => setActiveType("Evasion")}>
+                                    <div className='typeButton'>
                                         <Icon path={mdiRoadVariant}
                                             size={1}
                                             color="#565656" />
@@ -218,7 +218,7 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className='typeButton' onClick={() => setActiveType("Evasion")}>
+                                    <div className='typeButton'>
                                         <Icon path={mdiBagPersonalOutline}
                                             size={1}
                                             color="#565656" />
@@ -228,7 +228,7 @@ export default function Home() {
                             </> :
                             <>
                                 <div>
-                                    <div className='typeButton' onClick={() => setActiveType("Evasion")}>
+                                    <div className='typeButton'>
                                         <Icon path={mdiCalendarWeekendOutline}
                                             size={1}
                                             color="#565656" />
@@ -236,7 +236,7 @@ export default function Home() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className='typeButton' onClick={() => setActiveType("Evasion")}>
+                                    <div className='typeButton'>
                                         <Icon path={mdiCalendarBlank}
                                             size={1}
                                             color="#565656" />
