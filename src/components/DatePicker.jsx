@@ -3,10 +3,10 @@ import moment from 'moment';
 import Icon from '@mdi/react';
 
 import 'moment/locale/fr';
-import { mdiCalendar } from '@mdi/js';
+import { mdiCalendar, mdiClose } from '@mdi/js';
 moment.locale('fr');
 
-const CalendarPicker = () => {
+const CalendarPicker = ({}) => {
     const [selectedDates, setSelectedDates] = useState(null);
     const [selectedDays, setSelectedDays] = useState([]);
     const [showDates, setShowDates] = useState(false);
@@ -18,7 +18,7 @@ const CalendarPicker = () => {
             newDates = [e.target.id, e.target.id]
             setSelectedDates(newDates)
         } else {
-            if (e.target.id > selectedDates[1]) {
+            if ( moment(e.target.id, 'DD-MM-YYYY').isAfter(moment(selectedDates[1], 'DD-MM-YYYY'))) {
                 newDates[1] = e.target.id
                 setSelectedDates(newDates)
             } else {
@@ -60,9 +60,9 @@ const CalendarPicker = () => {
             for (let i = 0; i < 7; i++) {
                 const isDisabled = disabledDate(day);
                 day = day.clone().add(1, 'day');
-                const isSelected = selectedDates != null && selectedDates[0] && selectedDates[1] && day > moment(selectedDates[0], 'DD-MM-YYYY') && day < moment(selectedDates[1], 'DD-MM-YYYY');
+                const isSelected = selectedDates != null && selectedDates[0] && selectedDates[1] && day.isAfter(moment(selectedDates[0], 'DD-MM-YYYY')) && day.isBefore(moment(selectedDates[1], 'DD-MM-YYYY'));
                 const isCurrentMonth = day.isSame(month, 'month');
-                const isLimit = selectedDates != null && selectedDates[1] == day.format('DD-MM-YYYY') || selectedDates != null && selectedDates[0] == day.format('DD-MM-YYYY')
+                const isLimit = selectedDates != null && day.isSame(moment(selectedDates[1], 'DD-MM-YYYY')) || selectedDates != null && day.isSame(moment(selectedDates[0], 'DD-MM-YYYY'))
                 days.push(
                     <td
                         key={day.format('DD-MM-YYYY')}
@@ -100,25 +100,26 @@ const CalendarPicker = () => {
 
     return (
         <div className='ctn-depart position-relative'>
-            <div className='typeButton' onClick={() => setShowDates(true)}>
+            <div className='typeButton' onClick={() =>{ setShowDates(true)}}>
                 <Icon path={mdiCalendar}
                     size={1}
-                    horizontal
-                    vertical
                     color="#565656" />
                 {selectedDates ? selectedDates[0] : "Arrivée"}
             </div>
-            <div className='typeButton' onClick={() => setShowDates(true)}>
+            <div className='typeButton' onClick={() => {setShowDates(true)}}>
                 <Icon path={mdiCalendar}
                     size={1}
-                    horizontal
-                    vertical
                     color="#565656" />
                 {selectedDates ? selectedDates[1] : "Départ"}
             </div>
             <div id='calendar' style={{display: showDates ? "block" : 'none'}}>
                 <div className='calendar-title'>
                     Choisissez 2 dates
+                </div>
+                <div className='close-modal' onClick={() => setShowDates(false)}>
+                    <Icon path={mdiClose}
+                        size={.7}
+                        color="#565656" />
                 </div>
                 <div className="calendar-header">
                     <div onClick={previousMonth}>{'<'}</div>
